@@ -1,7 +1,7 @@
 ---
 title: "Sex-Biased Dispersal in the Sonoran Desert Bark Beetle"
-author: "Renée Hilelson & Rodney Dyer"
-date: "1/30/2020"
+author: "Renée Hilelson & <a href='http://dyerlab.org'>Rodney Dyer</a>"
+date: "<a href='https://ces.vcu.edu'>Center for Environmental Studies</a></br><a href='https://vcu.edu'>Virginia Commonwealth University</a></br>Richmond Virginia 23284"
 output: html_document
 ---
 
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
+> This is where the abstract goes... Blah blah blah.
 
 
 
