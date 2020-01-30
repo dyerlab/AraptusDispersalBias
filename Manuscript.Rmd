@@ -1,0 +1,49 @@
+---
+title: "Sex-Biased Dispersal in the Sonoran Desert Bark Beetle"
+author: "Renée Hilelson & Rodney Dyer"
+date: "1/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+
+## Introduction
+
+
+## Methods
+
+
+
+## Results
+
+
+
+## Discussion
+
+
+
+## Acknowledgements
+
+
+
+## Tables 
+
+
+
+## Figures
+
+
+
+## Citations
+
+
+
+
+
