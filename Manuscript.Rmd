@@ -40,6 +40,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Figures
 
+Figure 1: Map of all sampling locations
+
+
+Figure 2: Map of M/F sampling locations
+
 
 
 ## Citations

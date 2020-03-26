@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+author: "Rodney"
+date: "2020-02-10"
+output: html_notebook
+---
+
+## The Data
+
+Loading the data in and playing around with it.  Blah this is cool, I love R.
+
+```{r}
+library( tidyverse )
+data <- read_csv("data/Araptus_Samples.csv")
+summary( data )
+```
+
+To determine the names of the data columns.
+
+
+```{r}
+names( data )
+```
+
+
+Make a plot of males vs females in each site.
+
+```{r}
+data %>%
+  ggplot() +
+  geom_point( aes(Females, Males) ) +
+  coord_equal() + 
+  xlab("Number of Female Beetles") +
+  ylab("Number of Male Beetles") + 
+  geom_abline( intercept = 0, slope=1, color="red", linetype = 3  ) +
+  theme_bw()
+```
+
+
+
+
+```{r}
+data %>%
+  mutate( Ratio = Females/Males ) %>%
+  ggplot() + 
+  geom_point( aes( Suitability, Ratio ) )
+```
+
+
+
+
+
