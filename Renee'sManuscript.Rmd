@@ -1,0 +1,136 @@
+---
+title: "Sex-Biased Dispersal in the Sonoran Desert Bark Beetle"
+author: "Renée Hilelson & <a href='http://dyerlab.org'>Rodney Dyer</a>"
+date: "<a href='https://ces.vcu.edu'>Center for Environmental Studies</a></br><a href='https://vcu.edu'>Virginia Commonwealth University</a></br>Richmond Virginia 23284"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+library( tidyverse )
+```
+
+
+> This is where the abstract goes... Blah blah blah.
+
+
+
+## Introduction
+
+
+
+
+
+
+
+## Methods
+
+
+
+
+```{r }
+data <- read_csv("data/Araptus_Samples.csv")
+summary(data)
+```
+
+We sampled *N = `r nrow(data)`* locales.  At each site, we sampled 10 plants within a 1 km area.  On each plant, we collected all beetles for subsequent sex determination in the lab.
+
+
+We defined sex ratio as ...
+```{r}
+# data$SexRatio <- 
+```
+
+
+## Results
+
+The observed sex census counts of male ranged from `r min(data$Males)` - `r max(data$Males)` and females from `r min(data$Females)` - `r max(data$Females)`.
+
+Sex ratio varied from xxx  to xxx for the sites
+
+## Discussion
+
+
+
+## Acknowledgements
+
+
+
+## Tables 
+
+
+```{r}
+library(raster)
+library(leaflet)
+
+raster( "data/alt_22.tif" ) %>%
+  crop( extent( -116, -108, 22, 30 ) ) %>%
+  rasterToPoints() %>% 
+  data.frame() -> elevation
+summary(elevation)
+ggplot( elevation, aes(x,y,fill=alt_22)) + geom_raster() 
+```
+
+Table 1: make a table  with `SAMPLE SITES, LATITUDE, LoNGITUDE, ELEVATION`
+```{r}
+library( sp )
+pts <- SpatialPoints( cbind( data$Longitude, data$Latitude)  )
+class( pts )
+
+
+elev <- raster( "data/alt_22.tif" )
+data$Elevation <- extract( elev, pts )
+
+library( tidyverse )
+data %>%
+  dplyr::select( Site, Longitude, Latitude, Elevation ) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+```
+
+
+## Figures
+
+Figure 1: Map of study locations
+```{r}
+data %>%
+  leaflet()%>%
+  addTiles() %>%
+  addMarkers( ~Longitude, ~Latitude, label = ~Suitability)
+
+  
+```
+
+
+Figure 2: Sex Ratio ~ Latitude
+
+```{r}
+library(ggplot2)
+library(ggrepel)
+
+data %>%
+  ggplot(aes(Latitude, MFRatio)) +
+  xlab("Sex Ratio") +
+  geom_point()+
+  stat_smooth()
+```
+
+
+Figure X: Habitat Suitability
+```{r}
+data %>%
+  ggplot(aes(Suitability, 1.0/MFRatio)) +
+  geom_point()+
+    stat_smooth()
+```
+
+Figure 3: Sex Ratio ~ Habitat Suitability
+
+## Citations
+
+
+
+
+
